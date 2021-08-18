@@ -1,16 +1,30 @@
 import { VFC, memo } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Login } from '../components/pages/Login'
+import { homeRoutes } from './HomeRoutes'
 
 export const Router: VFC = memo(() => {
   return (
     <Switch>
-      <Route exact path='/'>
+      <Route exact path="/">
         <Login />
       </Route>
-      <Route path='/home' render={() => (
-        <Switch></Switch>
-      )} />
+      <Route
+        path="/home"
+        render={({ match: { url } }) => (
+          <Switch>
+            {homeRoutes.map((route) => (
+              <Route
+                key={route.path}
+                exact={route.exact}
+                path={`${url}${route.path}`}
+              >
+                {route.children}
+              </Route>
+            ))}
+          </Switch>
+        )}
+      />
     </Switch>
   )
 })
