@@ -1353,6 +1353,14 @@
   dependencies:
     "@chakra-ui/utils" "1.8.2"
 
+"@chakra-ui/icons@^1.0.15":
+  "integrity" "sha512-MMuPwmeCil9vAXceIN/Fxn6CNHbhkLofFQaKUfs+UaBsviiU2tvS0nqGaxm/9FNzLr5ithPVWpbz3uV7DXc77g=="
+  "resolved" "https://registry.npmjs.org/@chakra-ui/icons/-/icons-1.0.15.tgz"
+  "version" "1.0.15"
+  dependencies:
+    "@chakra-ui/icon" "1.1.11"
+    "@types/react" "^17.0.0"
+
 "@chakra-ui/image@1.0.18":
   "integrity" "sha512-hi123wYe+H0V3Yr3ujrbGdD/jPgrHpK/DB39R7IVVRPQz3kMRfffTfTXA57ah9iTwAG8jNyMckVyjeWClH3JPQ=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/image/-/image-1.0.18.tgz"
@@ -2509,7 +2517,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.8.0 || ^17.0.0", "@types/react@^17.0.18":
+"@types/react@*", "@types/react@^16.8.0 || ^17.0.0", "@types/react@^17.0.0", "@types/react@^17.0.18":
   "integrity" "sha512-YTLgu7oS5zvSqq49X5Iue5oAbVGhgPc5Au29SJC4VeE17V6gASoOxVkUDy9pXFMRFxCWCD9fLeweNFizo3UzOg=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-17.0.18.tgz"
   "version" "17.0.18"
