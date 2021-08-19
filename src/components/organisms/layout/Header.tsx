@@ -1,46 +1,46 @@
-import { Button, IconButton } from '@chakra-ui/button'
+import { VFC, memo, useCallback } from 'react'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { HamburgerIcon } from '@chakra-ui/icons'
 import { Box, Flex, Heading, Link } from '@chakra-ui/layout'
-import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@chakra-ui/modal'
-import { VFC, memo } from 'react'
+import { MenuIconButton } from '../../atoms/button/MenuIconButton'
+import { MenuDrawer } from '../../molecules/MenuDrawer'
+import { useHistory } from 'react-router'
 
 export const Header: VFC = memo(() => {
-    const {isOpen, onOpen, onClose} =useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const history = useHistory()
+  const onClickHome = useCallback(() => history.push('/home'), [history])
+  const onClickUserManagement = useCallback(() => history.push('/home/user_management'), [history])
+  const onClickSetting = useCallback(() => history.push('/home/setting'), [history])
   return (
     <>
-      <Flex as="nav" bg="teal.500" color="gray.50" align="center" justify="space-between" padding={{ base: 3, md: 5 }}>
-        <Flex align="center" as="a" mr={8} _hover={{ cursor: 'pointer' }}>
+      <Flex
+        as="nav"
+        bg="teal.500"
+        color="gray.50"
+        align="center"
+        justify="space-between"
+        padding={{ base: 3, md: 5 }}
+      >
+        <Flex align="center" as="a" mr={8} _hover={{ cursor: 'pointer' }} onClick={onClickHome}>
           <Heading as="h1" fontSize={{ base: 'md', md: 'lg' }}>
             User Management App
           </Heading>
         </Flex>
         <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: 'none', md: 'flex' }}>
           <Box pr={4}>
-            <Link>User all</Link>
+            <Link onClick={onClickUserManagement}>User all</Link>
           </Box>
-          <Link>Setting</Link>
+          <Link onClick={onClickSetting}>Setting</Link>
         </Flex>
-        <IconButton
-          aria-label="menu button"
-          icon={<HamburgerIcon />}
-          size="sm"
-          variant="unstyled"
-          display={{ base: 'block', md: 'none' }}
-          onClick={onOpen}
-        />
+        <MenuIconButton onOpen={onOpen} />
       </Flex>
-      <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerBody p={0} bg="gray.100">
-              <Button w="100%">TOP</Button>
-              <Button w="100%">User All</Button>
-              <Button w="100%">Setting</Button>
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      <MenuDrawer
+        onClose={onClose}
+        isOpen={isOpen}
+        onClickHome={onClickHome}
+        onClickSetting={onClickSetting}
+        onClickUserManagement={onClickUserManagement}
+      />
     </>
   )
 })
