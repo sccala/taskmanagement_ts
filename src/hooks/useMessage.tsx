@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps*/
 import { useToast } from '@chakra-ui/toast'
 import { useCallback } from 'react'
 

@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps*/
 import { useCallback, useState } from 'react'
 import { User } from '../types/api/user'
 import { useMessage } from './useMessage'
+
 
 type Props = {
   id: number
